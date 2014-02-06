@@ -29,6 +29,7 @@ def factors(num):
   while (i<=int(round(math.sqrt(num)))):
     if (num%i==0):
       listOfF.append(i)
+    i+=1
   return listOfF
 
 def howManyFactors(num):
