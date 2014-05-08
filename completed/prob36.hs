@@ -17,6 +17,5 @@ convertToDecimal s = fst $ head $ readInt 2 (`elem` "01") digitToInt s
 solution0 = sum (map convertToDecimal (filter isPalindrome (map convertToBinary (filter isIntPalindrome [1..1000000]))))
 solution1 = sum $ map convertToDecimal $ filter isPalindrome $ map convertToBinary $ filter isIntPalindrome [1..1000000]
 solution2 = sum . map convertToDecimal . filter isPalindrome . map convertToBinary $ filter isIntPalindrome [1..1000000]
---solution2 = sum . map convertToDecimal . filter isPalindrome . map convertToBinary . filter isIntPalindrome [1..1000000]
 
-test = convertToDecimal $ convertToBinary 255
+main = putStrLn $ show solution0
