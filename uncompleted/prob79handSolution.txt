@@ -1,0 +1,43 @@
+3->0	--assign each digit a position variable at first (0, 1, 2)
+1->1
+9->2
+------------------------------------
+6->0	--in subsequent 'x's, if the digit is already in pcode, copy the position variable
+8->1	--otherwise, just assign the next highest
+0->2	--if everything is in ascending order but there are no duplicates, just add x 
+		--to a seperate variable to keep two 'pcodes'
+
+-> 319, 680
+---------------------------------------
+1->1	--copied position variables
+8->1	--but there is a discrepency, (8 and 1 have the same position value)
+0->2
+		--to solve, just increment 8 and 0 so this triple sequence is correct.
+		--modify 8 and 0 from their original pcode slots
+		--add triple because it contains a unique combination of digits
+		
+3->0, 1->1, 9->2;; 6->0, 8->2, 0->3;; 1->1, 8->2, 0->3
+------------------------------------------
+6->0	--copied position variables
+9->2	--no discrepency, but let's add it because a unique combo of digits
+0->3
+
+3->0, 1->1, 9->2;; 6->0, 8->2, 0->3;; 1->1, 8->2, 0->3;; 6->0, 9->2, 0->3
+------------------------------------------
+1->1	--copied position variables
+2->***2	--2 is a new digit, so we just made it the increment of its previous digit in the triple
+9->2	--DISCREPENCY: 2 and 9 now have the same position values
+		--solve by incrementing 9 in all positions
+		
+3->0, 1->1, 9->3;; 6->0, 8->2, 0->3;; 1->1, 8->2, 0->3;; 6->0, 9->3, 0->3
+
+		--NEW DISCREPENCY:: in rightmost existing pcode slot, 9 and three have same position
+		--solve by incrementing 0's position value in all slots
+		
+3->0, 1->1, 9->3;; 6->0, 8->2, 0->4;; 1->1, 8->2, 0->4;; 6->0, 9->3, 0->4
+
+	--no further discrepencies, so add new triple to slot because it represents a unique combination
+	
+===============================================
+--continue until you've gone through all triples
+--then, take your existing pcode array, and add all digits to official pcode in ascending position value order
